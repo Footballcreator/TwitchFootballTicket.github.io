@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Twitch Streamers Football Match | 24 October 2026</title>
+
+    <meta name="description"
+          content="Twitch Streamers Football Match — Saturday 24 October 2026 at AVRO FC. Tickets £4 children and £6 adults.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07070a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: rgba(7,7,10,0.88);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #9147ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #9147ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 20px 60px;
+            background:
+                radial-gradient(circle at 50% 20%, rgba(145,71,255,0.30), transparent 35%),
+                radial-gradient(circle at 20% 80%, rgba(0,180,255,0.15), transparent 30%),
+                #07070a;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(145,71,255,0.10);
+            filter: blur(100px);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(145,71,255,0.15);
+            border: 1px solid rgba(145,71,255,0.4);
+            color: #c49aff;
+            padding: 9px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 100px);
+            line-height: 0.9;
+            font-weight: 950;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            color: #9147ff;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 25px);
+            color: #bbb;
+            margin-bottom: 35px;
+        }
+
+        .event-date {
+            font-size: clamp(25px, 4vw, 40px);
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .event-time {
+            color: #aaa;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 17px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 900;
+            transition: 0.25s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #9147ff;
+            color: white;
+            box-shadow: 0 10px 35px rgba(145,71,255,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #a65cff;
+        }
+
+        .btn-secondary {
+            border: 1px solid #333;
+            background: rgba(255,255,255,0.04);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.09);
+            transform: translateY(-3px);
+        }
+
+        /* COUNTDOWN */
+        .countdown {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .count-box {
+            min-width: 90px;
+            padding: 18px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 12px;
+        }
+
+        .count-number {
+            display: block;
+            font-size: 30px;
+            font-weight: 950;
+        }
+
+        .count-label {
+            color: #888;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-top: 4px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(32px, 5vw, 55px);
+            font-weight: 950;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #999;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+
+        /* INFO */
+        .info-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            padding: 35px 25px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #111116, #0c0c10);
+            border: 1px solid #222;
+            text-align: center;
+        }
+
+        .info-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .info-card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: #999;
+            line-height: 1.5;
+        }
+
+        /* TICKETS */
+        .tickets {
+            background:
+                linear-gradient(rgba(7,7,10,0.95), rgba(7,7,10,0.95)),
+                radial-gradient(circle at center, #3d1a6e, transparent 60%);
+        }
+
+        .ticket-grid {
+            max-width: 850px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .ticket {
+            position: relative;
+            background: #111116;
+            border: 1px solid #29292f;
+            border-radius: 20px;
+            padding: 35px;
+            overflow: hidden;
+        }
+
+        .ticket::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 4px;
+            background: #9147ff;
+        }
+
+        .ticket h3 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 55px;
+            font-weight: 950;
+            margin: 15px 0 25px;
+        }
+
+        .price small {
+            font-size: 17px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .ticket p {
+            color: #999;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .buy-btn {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: #9147ff;
+            border-radius: 9px;
+            color: white;
+            text-decoration: none;
+            font-weight: 900;
+            transition: 0.2s;
+        }
+
+        .buy-btn:hover {
+            background: #a65cff;
+            transform: translateY(-2px);
+        }
+
+        .payment-note {
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            margin-top: 25px;
+        }
+
+        .payment-note strong {
+            color: #aaa;
+        }
+
+        /* VENUE */
+        .venue {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .venue-card {
+            background: #111116;
+            border: 1px solid #25252b;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .venue-card h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .venue-card p {
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .address {
+            font-size: 20px;
+            color: white !important;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .map-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 20px;
+            border-radius: 8px;
+            background: #222229;
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 25px;
+            padding: 22px;
+            border-left: 2px solid #9147ff;
+            background: rgba(255,255,255,0.025);
+            margin-bottom: 10px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .timeline-time {
+            font-weight: 950;
+            min-width: 90px;
+            color: #b98aff;
+        }
+
+        .timeline-text {
+            color: #ddd;
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 50px 7%;
+            border-top: 1px solid #1c1c21;
+            text-align: center;
+            color: #777;
+        }
+
+        footer strong {
+            color: #aaa;
+        }
+
+        /* MOBILE */
+        @media (max-width: 750px) {
+            nav {
+                display: none;
+            }
+
+            .topbar {
+                justify-content: center;
+            }
+
+            .info-grid,
+            .ticket-grid,
+            .venue {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 75px 5%;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .count-box {
+                min-width: 75px;
+            }
+
+            .count-number {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header class="topbar">
+    <div class="logo">
+        TWITCH<span>⚽</span> MATCH
+    </div>
+
+    <nav>
+        <a href="#event">Event</a>
+        <a href="#tickets">Tickets</a>
+        <a href="#venue">Venue</a>
+        <a href="#schedule">Schedule</a>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="event">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🔴 LIVE STREAMER EVENT
+        </div>
+
+        <h1>
+            TWITCH<br>
+            <span>FOOTBALL</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            A special football match featuring Twitch streamers.
+        </p>
+
+        <div class="event-date">
+            SATURDAY 24 OCTOBER 2026
+        </div>
+
+        <div class="event-time">
+            ⚽ Kick-off — 6:00 PM
+        </div>
+
+        <div class="buttons">
+            <a href="#tickets" class="btn btn-primary">
+                🎟️ GET TICKETS
+            </a>
+
+            <a href="#venue" class="btn btn-secondary">
+                📍 VENUE
+            </a>
+        </div>
+
+        <div class="countdown">
+
+            <div class="count-box">
+                <span class="count-number" id="days">00</span>
+                <span class="count-label">Days</span>
+            </div>
+
+            <div class="count-box">
+                <span class="count-number" id="hours">00</span>
+                <span class="count-label">Hours</span>
+            </div>
+
+            <div class="count-box">
+                <span class="count-number" id="minutes">00</span>
+                <span class="count-label">Minutes</span>
+            </div>
+
+            <div class="count-box">
+                <span class="count-number" id="seconds">00</span>
+                <span class="count-label">Seconds</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- EVENT INFORMATION -->
+<section>
+
+    <h2 class="section-title">
+        THE EVENT
+    </h2>
+
+    <p class="section-subtitle">
+        Come along and watch Twitch streamers take to the pitch
+        for a live football match in front of a crowd.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <div class="info-icon">📅</div>
+            <h3>24 October</h3>
+            <p>
+                Saturday 24th October 2026
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">⚽</div>
+            <h3>Kick-Off</h3>
+            <p>
+                Match starts at 6:00 PM
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🎥</div>
+            <h3>Streamer Match</h3>
+            <p>
+                A live football event featuring Twitch streamers.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TICKETS -->
+<section class="tickets" id="tickets">
+
+    <h2 class="section-title">
+        🎟️ TICKETS
+    </h2>
+
+    <p class="section-subtitle">
+        Secure your place at the Twitch Streamers Football Match.
+    </p>
+
+    <div class="ticket-grid">
+
+        <!-- CHILD -->
+        <div class="ticket">
+
+            <h3>Child Ticket</h3>
+
+            <div class="price">
+                £4
+                <small>/ person</small>
+            </div>
+
+            <p>
+                Entry for children to the football match.
+            </p>
+
+            <a
+                class="buy-btn"
+                href="https://www.paypal.me/MaxWright2009/4"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                PAY £4 VIA PAYPAL
+            </a>
+
+        </div>
+
+
+        <!-- ADULT -->
+        <div class="ticket">
+
+            <h3>Adult Ticket</h3>
+
+            <div class="price">
+                £6
+                <small>/ person</small>
+            </div>
+
+            <p>
+                Entry for adults to the football match.
+            </p>
+
+            <a
+                class="buy-btn"
+                href="https://www.paypal.me/MaxWright2009/6"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                PAY £6 VIA PAYPAL
+            </a>
+
+        </div>
+
+    </div>
+
+    <p class="payment-note">
+        Payments are made through PayPal to
+        <strong>Max Wright</strong>.
+    </p>
+
+</section>
+
+
+<!-- VENUE -->
+<section id="venue">
+
+    <h2 class="section-title">
+        📍 VENUE
+    </h2>
+
+    <p class="section-subtitle">
+        Join us at the home of AVRO FC.
+    </p>
+
+    <div class="venue">
+
+        <div class="venue-card">
+
+            <h3>AVRO FC</h3>
+
+            <p>
+                <strong>Address</strong>
+            </p>
+
+            <p class="address">
+                OL8 3JH<br>
+                Oldham, Greater Manchester
+            </p>
+
+            <p>
+                Saturday 24 October 2026
+            </p>
+
+            <p>
+                Kick-off: <strong>6:00 PM</strong>
+            </p>
+
+            <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=AVRO+FC+OL8+3JH"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                📍 OPEN IN GOOGLE MAPS
+            </a>
+
+        </div>
+
+
+        <div class="venue-card">
+
+            <h3>Event Information</h3>
+
+            <p>
+                Doors and event timings will be announced by the
+                organisers.
+            </p>
+
+            <br>
+
+            <p>
+                🎟️ Child tickets: <strong>£4</strong>
+            </p>
+
+            <p>
+                🎟️ Adult tickets: <strong>£6</strong>
+            </p>
+
+            <br>
+
+            <p>
+                ⚽ Kick-off: <strong>6:00 PM</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SCHEDULE -->
+<section id="schedule">
+
+    <h2 class="section-title">
+        🕐 EVENT SCHEDULE
+    </h2>
+
+    <p class="section-subtitle">
+        Important timings for match day.
+    </p>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="timeline-time">
+                5:00 PM
+            </div>
+
+            <div class="timeline-text">
+                Event / ticket entry begins
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-time">
+                5:30 PM
+            </div>
+
+            <div class="timeline-text">
+                Gates open
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-time">
+                6:00 PM
+            </div>
+
+            <div class="timeline-text">
+                ⚽ KICK-OFF
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+<section>
+
+    <div style="
+        max-width:900px;
+        margin:auto;
+        text-align:center;
+        padding:60px 30px;
+        border-radius:25px;
+        background:linear-gradient(135deg,#17121f,#0d0d12);
+        border:1px solid #29202f;
+    ">
+
+        <div style="font-size:45px;margin-bottom:15px;">
+            ⚽🔥
+        </div>
+
+        <h2 style="
+            font-size:clamp(32px,5vw,55px);
+            font-weight:950;
+            margin-bottom:15px;
+        ">
+            SEE YOU ON MATCH DAY
+        </h2>
+
+        <p style="
+            color:#999;
+            margin-bottom:30px;
+        ">
+            Saturday 24 October 2026 · 6:00 PM · AVRO FC
+        </p>
+
+        <a
+            href="#tickets"
+            class="btn btn-primary"
+        >
+            🎟️ BUY TICKETS
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        <strong>Twitch Streamers Football Match</strong>
+    </p>
+
+    <p style="margin-top:10px;">
+        Saturday 24 October 2026 · AVRO FC · OL8 3JH
+    </p>
+
+    <p style="margin-top:20px;font-size:12px;">
+        Ticket payments are processed through PayPal.
+        Please retain your payment confirmation.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /*
+        EVENT COUNTDOWN
+
+        24 October 2026
+        18:00 UK time
+
+        British Summer Time (BST) applies in October
+        until the clocks change on the final Sunday.
+    */
+
+    const eventDate = new Date("2026-10-24T18:00:00+01:00").getTime();
+
+    function updateCountdown() {
+
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+
+        if (distance <= 0) {
+
+            document.getElementById("days").textContent = "00";
+            document.getElementById("hours").textContent = "00";
+            document.getElementById("minutes").textContent = "00";
+            document.getElementById("seconds").textContent = "00";
+
+            return;
+        }
+
+        const days = Math.floor(
+            distance / (1000 * 60 * 60 * 24)
+        );
+
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
+
+        const minutes = Math.floor(
+            (distance % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
+
+        const seconds = Math.floor(
+            (distance % (1000 * 60))
+            / 1000
+        );
+
+        document.getElementById("days").textContent =
+            String(days).padStart(2, "0");
+
+        document.getElementById("hours").textContent =
+            String(hours).padStart(2, "0");
+
+        document.getElementById("minutes").textContent =
+            String(minutes).padStart(2, "0");
+
+        document.getElementById("seconds").textContent =
+            String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
